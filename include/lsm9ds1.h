@@ -9,18 +9,18 @@ extern "C"
 
     typedef struct
     {
-        i2c_device_config_t lsm9ds1_ag_device; /*!< Configuration for accelgyro device */
-        i2c_device_config_t lsm9ds1_m_device;  /*!< Configuration for mag device */
-        uint8_t addr_wordlen;                  /*!< block address wordlen */
-        uint8_t write_time_ms;                 /*!< eeprom write time, typically 10ms*/
+        i2c_device_config_t accel_gyro_config; /*!< Configuration for accelgyro device */
+        i2c_device_config_t mag_config;        /*!< Configuration for mag device */
+        uint8_t buffer_size;
     } i2c_lsm9ds1_config_t;
 
     struct i2c_lsm9ds1_t
     {
-        i2c_master_dev_handle_t i2c_dev; /*!< I2C device handle */
-        uint8_t addr_wordlen;            /*!< block address wordlen */
-        uint8_t *buffer;                 /*!< I2C transaction buffer */
-        uint8_t write_time_ms;           /*!< I2C eeprom write time(ms)*/
+        i2c_master_dev_handle_t accel_gyro_dev; /*!< I2C device handle for accelerometer/gyroscope */
+        i2c_master_dev_handle_t mag_dev;        /*!< I2C device handle for magnetometer */
+        uint8_t addr_wordlen;                   /*!< block address wordlen */
+        uint8_t *buffer;                        /*!< I2C transaction buffer */
+        uint8_t write_time_ms;                  /*!< I2C eeprom write time(ms)*/
     };
 
     typedef struct i2c_lsm9ds1_t i2c_lsm9ds1_t;
